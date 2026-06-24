@@ -11,11 +11,17 @@ file(GLOB all_src_files
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 set(CMAKE_CXX_STANDARD 11)
 
+# 查找线程库
+find_package(Threads REQUIRED)
+
 # 测试文件输出
-add_executable(test_mymuduo ${all_src_files})
+add_executable(test.out ${all_src_files})
 
 # 添加头文件目录
-target_include_directories(test_mymuduo PRIVATE 
+target_include_directories(test.out PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}/muduo/base
     ${CMAKE_CURRENT_SOURCE_DIR}/muduo/net
 )
+
+# 链接线程库
+target_link_libraries(test.out PRIVATE Threads::Threads)
