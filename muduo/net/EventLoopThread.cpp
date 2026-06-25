@@ -4,10 +4,7 @@
 EventLoopThread::EventLoopThread(const ThreadInitCallback& cb,
     const std::string& name)
     : thread_([this]() { this->threadFunc(); }, name)
-    , callback_(cb)
-{ 
-
-}
+    , callback_(cb) { }
 
 EventLoopThread::~EventLoopThread() {
     exiting_ = true;
