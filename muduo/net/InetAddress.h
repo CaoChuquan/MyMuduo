@@ -11,7 +11,7 @@ class InetAddress {
 private:
     struct sockaddr_in addr_;
 public:
-    explicit InetAddress(uint16_t port, const std::string& ip = "127.0.0.1");
+    explicit InetAddress(uint16_t port = 8080, const std::string& ip = "127.0.0.1");
     explicit InetAddress(sockaddr_in& addr) : addr_(addr) {}
     // 返回 IP（点分十进制）
     std::string toIp() const;
