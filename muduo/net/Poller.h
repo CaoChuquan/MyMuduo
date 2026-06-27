@@ -8,7 +8,8 @@
 class EventLoop;
 class Channel;
 
-// muduo 库中多路复用事件分发器的核心 I/O 复用模块
+/* Poller 类和 EPollPoller 类是事件监听器，实现了对 epoll() 的封装，
+   它们负责管理和监听大量的文件描述符，并在有事件发生时，通知上层应用。*/
 class Poller : noncopyable {
 public:
     using ChannelList = std::vector<Channel*>;

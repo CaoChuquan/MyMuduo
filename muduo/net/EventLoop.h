@@ -13,7 +13,20 @@
 class Poller;
 class Channel;
 
-// 时间循环类
+/* EventLoop 类驱动了整个事件循环，负责监听 I/O 事件、执行回调任务
+和管理定时器，是连接 Poller、Channel 和上层业务逻辑的总调度者。
+
+核心作用：
+1. 事件监听与分发：通过内部的 Poller 等待 I/O 事件发生，并将就绪的 
+Channel 分发出去处理。
+2. 任务执行：执行用户通过 runInLoop() 或 queueInLoop() 投递到该线
+程的任务（Functor）。
+3. 定时器管理：管理定时任务，利用 timerfd 机制在指定时间触发回调。
+
+EventLoop 与线程绑定，一个线程只能有一个 EventLoop 实例
+（通过 thread_local 保证），所有操作必须在该线程内完成，这极大简化了
+并发模型。 */
+
 class EventLoop : noncopyable {
 public:
     using Functor = std::function<void()>;
