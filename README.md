@@ -39,6 +39,7 @@ boost::weak_ptr	std::weak_ptr
 boost::function	std::function
 boost::bind	std::bind + lambda
 boost::noncopyable	= delete 声明
+
 2. 内存管理优化
 全面使用智能指针管理资源，替代手动的 new/delete，提高代码安全性和可维护性。
 
