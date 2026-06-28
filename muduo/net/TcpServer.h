@@ -7,6 +7,7 @@
 #include "Acceptor.h"
 #include "InetAddress.h"
 #include "noncopyable.h"
+#include "EventLoopThread.h"
 #include "EventLoopThreadPool.h"
 #include "Callbacks.h"
 #include "TcpConnection.h"

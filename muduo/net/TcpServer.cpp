@@ -34,7 +34,7 @@ TcpServer::TcpServer(EventLoop *loop,
 TcpServer::~TcpServer() {
     for (auto &item : connections_)
     {
-        // 这个局部的shared_ptr智能指针对象，出右括号，可以自动释放new出来的TcpConnection对象资源了
+        // 这个局部的 shared_ptr 智能指针对象，出右括号，可以自动释放 new 出来的 TcpConnection 对象资源了
         TcpConnectionPtr conn(item.second); 
         item.second.reset();
 
